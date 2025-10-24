@@ -35,23 +35,23 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- Below dependency is used to resolve jsp views using tomcat -->
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-jasper</artifactId>
-			<version>10.1.16</version>
-		</dependency>
-		<!-- Below (both) dependencies is used to resolve jstl expressions using tomcat -->
-		<dependency>
-			<groupId>jakarta.servlet.jsp.jstl</groupId>
-			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-			<version>3.0.1</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.tomcat</groupId>-->
+<!--			<artifactId>tomcat-jasper</artifactId>-->
+<!--			<version>10.1.16</version>-->
+<!--		</dependency>-->
+<!--		&lt;!&ndash; Below (both) dependencies is used to resolve jstl expressions using tomcat &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>jakarta.servlet.jsp.jstl</groupId>-->
+<!--			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>-->
+<!--			<version>3.0.1</version>-->
+<!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
-			<version>3.0.1</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.glassfish.web</groupId>-->
+<!--			<artifactId>jakarta.servlet.jsp.jstl</artifactId>-->
+<!--			<version>3.0.1</version>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

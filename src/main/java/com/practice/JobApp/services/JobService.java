@@ -20,4 +20,8 @@ public class JobService {
     public List<JobPost> getAllJobPosts() {
         return jobRepository.getAllJobs();
     }
+
+    public JobPost getJobPostById(Integer id) {
+        return jobRepository.getJobPostById(id);
+    }
 }

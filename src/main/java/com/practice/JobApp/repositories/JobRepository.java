@@ -59,4 +59,8 @@ public class JobRepository {
     public void addJob(JobPost jobPost) {
         jobs.add(jobPost);
     }
+
+    public JobPost getJobPostById(Integer id) {
+        return jobs.stream().filter(job -> job.getPostId() == id).findFirst().orElse(null);
+    }
 }
