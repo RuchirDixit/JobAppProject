@@ -3,36 +3,48 @@ package com.practice.JobApp.controllers;
 import com.practice.JobApp.models.JobPost;
 import com.practice.JobApp.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:9000")   // Allowing requests from frontend server (react app is running on localhost:9000)
 public class JobController {
 
     @Autowired
     private JobService jobService;
 
-    @GetMapping({"/", "/home"})
-    public String home() {
-        return "home";
+
+    @GetMapping("/jobposts")
+    public List<JobPost> getAllJobPosts() {
+        return jobService.getAllJobPosts();
     }
 
-    @GetMapping("/addjob")
-    public String addJob() {
-        return "addjob";
+    @GetMapping("/jobpost/{id}")
+    public JobPost getJobPostById(@PathVariable Integer id){
+        return jobService.getJobPostById(id);
     }
 
-    @PostMapping("/handleForm")
-    public String handleForm(JobPost jobPost) {
+    @GetMapping("/jobposts/keyword/{keyword}")
+    public List<JobPost> getJobPostsByKeyWord(@PathVariable String keyword){
+        return jobService.getJobPostsByKeyWord(keyword);
+    }
+
+    @PostMapping("/jobpost")
+    public JobPost addJobPost(@RequestBody JobPost jobPost) {
         jobService.saveJobPost(jobPost);
-        return "success";
+        return jobService.getJobPostById(jobPost.getPostId());
     }
 
-    @GetMapping("/viewalljobs")
-    public String viewAllJobs(Model model) {
-        model.addAttribute("jobPosts", jobService.getAllJobPosts());
-        return "viewalljobs";
+    @PutMapping("/jobpost")
+    public JobPost updateJobPost(@RequestBody JobPost jobPost) {
+        jobService.updateJobPost(jobPost);
+        return jobService.getJobPostById(jobPost.getPostId());
+    }
+
+    @DeleteMapping("/jobpost/{postId}")
+    public String deleteJobPost(@PathVariable int postId) {
+        jobService.deleteJobPost(postId);
+        return "Deleted";
     }
 }
