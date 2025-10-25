@@ -14,14 +14,26 @@ public class JobService {
     private JobRepository jobRepository;
 
     public void saveJobPost(JobPost jobPost) {
-        jobRepository.addJob(jobPost);
+        jobRepository.save(jobPost);
     }
 
     public List<JobPost> getAllJobPosts() {
-        return jobRepository.getAllJobs();
+        return jobRepository.findAll();
     }
 
     public JobPost getJobPostById(Integer id) {
-        return jobRepository.getJobPostById(id);
+        return jobRepository.findById(id).orElse(null);
+    }
+
+    public void updateJobPost(JobPost jobPost) {
+        jobRepository.save(jobPost);
+    }
+
+    public void deleteJobPost(int jobPostId) {
+        jobRepository.deleteById(jobPostId);
+    }
+
+    public List<JobPost> getJobPostsByKeyWord(String keyword) {
+        return jobRepository.findByPostProfileContainingIgnoreCaseOrPostDescContainingIgnoreCase(keyword, keyword);
     }
 }

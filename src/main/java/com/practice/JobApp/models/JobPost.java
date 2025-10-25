@@ -2,17 +2,31 @@ package com.practice.JobApp.models;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+@Entity
 public class JobPost {
+
+    @Id
     private int postId;
+
+    @Column(name = "profile")
     private String postProfile;
+
+    @Column(name = "description")
     private String postDesc;
+
+    @Column(name = "required_experience")
     private Integer reqExperience;
+
+    @Column(name = "tech_stack")
     private List<String> postTechStack;
 
     public JobPost() {}

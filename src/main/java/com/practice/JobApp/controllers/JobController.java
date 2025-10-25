@@ -25,9 +25,26 @@ public class JobController {
         return jobService.getJobPostById(id);
     }
 
+    @GetMapping("/jobposts/keyword/{keyword}")
+    public List<JobPost> getJobPostsByKeyWord(@PathVariable String keyword){
+        return jobService.getJobPostsByKeyWord(keyword);
+    }
+
     @PostMapping("/jobpost")
     public JobPost addJobPost(@RequestBody JobPost jobPost) {
         jobService.saveJobPost(jobPost);
         return jobService.getJobPostById(jobPost.getPostId());
+    }
+
+    @PutMapping("/jobpost")
+    public JobPost updateJobPost(@RequestBody JobPost jobPost) {
+        jobService.updateJobPost(jobPost);
+        return jobService.getJobPostById(jobPost.getPostId());
+    }
+
+    @DeleteMapping("/jobpost/{postId}")
+    public String deleteJobPost(@PathVariable int postId) {
+        jobService.deleteJobPost(postId);
+        return "Deleted";
     }
 }
