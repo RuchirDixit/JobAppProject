@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * JobService provides business logic for managing job posts.
+ */
+
 @Service
 public class JobService {
 
