@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * JobController handles HTTP requests related to job posts.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:9000")   // Allowing requests from frontend server (react app is running on localhost:9000)
 public class JobController {
